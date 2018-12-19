@@ -45,7 +45,7 @@ const TabNavigatorConfig = {
 const Tabs = Platform.OS === 'ios' ? createBottomTabNavigator(RouteConfigs, TabNavigatorConfig) : createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
 
 const MainNavigator = createStackNavigator({
-  Home: {
+  Main: {
     screen: Tabs,
     navigationOptions: {
       header: null
