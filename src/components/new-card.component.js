@@ -6,15 +6,35 @@ import AwesomeButton from 'react-native-really-awesome-button';
 import { BigVerticalSeparator, Container } from './stylesheet';
 import { Color } from '../constants';
 
-class NewDeck extends React.Component {
+class NewCard extends React.Component {
+
+  static navigationOptions = ({ navigation }) => ({
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: Color.Primary,
+    },
+  })
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <View>
-          <FormLabel>What is the title of your new deck?</FormLabel>
+          <FormLabel>What is your question?</FormLabel>
           <FormInput
             // shake
-            placeholder={'Deck Title'}
+            inputStyle={{ width: '100%' }}
+            multiline
+            placeholder={'Question'}
+            onChangeText={() => { }} />
+          {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+        </View>
+        <View>
+          <FormLabel>What is your answer?</FormLabel>
+          <FormInput
+            // shake
+            inputStyle={{ width: '100%' }}
+            multiline
+            placeholder={'Answer'}
             onChangeText={() => { }} />
           {/* <FormValidationMessage>Error message</FormValidationMessage> */}
         </View>
@@ -41,4 +61,4 @@ class NewDeck extends React.Component {
 export default connect(
   // mapStateToProps,
   // mapDispatchToProps,
-)(NewDeck)
+)(NewCard)

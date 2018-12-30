@@ -9,7 +9,7 @@ export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 // export const OPENED_ADDED_CARD = 'OPENED_ADDED_CARD';
 
 
-export function fetchDecks() {
+export function getDecks() {
   return async dispatch => {
     let decks = await API.getDecks();
     dispatch({ type: REQUEST_DECKS })

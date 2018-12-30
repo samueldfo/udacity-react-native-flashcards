@@ -1,47 +1,50 @@
 import React from 'react';
 import { Text, View, FlatList, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
-import { DeckContainer, DeckText } from './stylesheet';
-import Deck from './deck.component'
+import { Container, DeckText } from './stylesheet';
+import { Deck } from './deck.component';
+import { getDecks } from '../actions';
 
 class Decks extends React.Component {
+
+  componentDidMount() {
+    this.props.getDecks()
+  }
+
   render() {
+    const { decks } = this.props
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <DeckContainer>
-          <Deck/>
-        </DeckContainer>
-      </SafeAreaView>
-      // {/* <Deck/> */}
-      // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      //   <Text>DECKS</Text>
-      //   <FlatList
-      //     data={[{ key: 'a' }, { key: 'b' }]}
-      //     renderItem={({ item }) => <Text>{item.key}</Text>}
-      //   />
-      // </View>
+      <Container>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={decks}
+          keyExtractor={(item) => item.id}
+          renderItem={Deck}
+        />
+      </Container>
     );
   }
 }
 
-export default connect(
-  // mapStateToProps,
-  // mapDispatchToProps,
-)(Decks)
+function mapStateToProps({ decks }, { navigation }) {
+  return {
+    // openDeck: decks.addedDeck ? () => navigation.navigate('DeckDetail', { ...decks.addedDeck }) : null,
+    decks: decks.items.map(item => {
+      return {
+        ...item,
+        handleClick: () => navigation.navigate('CardMenu', { ...item }),
+      }
+    }),
+  }
+}
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     paddingTop: 40,
-//     backgroundColor: '#ecf0f1',
-//   },
-//   paragraph: {
-//     margin: 24,
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//     color: '#34495e',
-//   },
-// });
+function mapDispatchToProps(dispatch) {
+  return {
+    getDecks: () => dispatch(getDecks()),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Decks)

@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux'
 
+const initialState = {
+  isFetching: false,
+  items: [],
+  // addedDeck: null,
+}
+
 import {
   RECEIVE_DECKS,
   REQUEST_DECKS,
@@ -10,18 +16,12 @@ import {
   // OPENED_ADDED_CARD,
 } from './actions'
 
-export function decks(
-  state = {
-    isFetching: false,
-    items: [],
-    // addedDeck: null,
-  },
-  action
-) {
+export function decks(state = initialState, action) {
+  const { decks } = action
   switch (action.type) {
     case REQUEST_DECKS:
-    // case ADD_DECK:
-    // case ADD_CARD:
+      // case ADD_DECK:
+      // case ADD_CARD:
       return {
         ...state,
         isFetching: true,
@@ -30,8 +30,8 @@ export function decks(
       return {
         ...state,
         isFetching: false,
-        items: action.decks,
-    //     lastUpdated: action.receivedAt,
+        items: decks,
+        //     lastUpdated: action.receivedAt,
       }
     // case ADDED_DECK:
     //   return {
@@ -61,6 +61,6 @@ export function decks(
   }
 }
 
-export default combineReducers({ 
-  decks,
+export default combineReducers({
+  decks
 })
