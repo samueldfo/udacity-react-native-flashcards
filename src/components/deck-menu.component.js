@@ -7,7 +7,7 @@ import CardFlip from 'react-native-card-flip';
 import { Color } from '../constants';
 
 // const viewPortWidth = Dimensions.get('window').width;
-class CardMenu extends React.Component {
+class DeckMenu extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     headerTintColor: 'white',
@@ -64,4 +64,4 @@ function mapStateToProps({ decks }, { navigation }) {
 export default connect(
   mapStateToProps,
   // mapDispatchToProps,
-)(CardMenu)
+)(DeckMenu)

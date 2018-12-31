@@ -30,9 +30,10 @@ function mapStateToProps({ decks }, { navigation }) {
   return {
     // openDeck: decks.addedDeck ? () => navigation.navigate('DeckDetail', { ...decks.addedDeck }) : null,
     decks: decks.items.map(item => {
+      console.log(item)
       return {
         ...item,
-        handleClick: () => navigation.navigate('CardMenu', { ...item }),
+        handleClick: () => navigation.navigate('DeckMenu', { ...item }),
       }
     }),
   }

@@ -3,10 +3,38 @@ import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 import AwesomeButton from 'react-native-really-awesome-button';
-import { BigVerticalSeparator, Container } from './stylesheet';
+import { BigVerticalSeparator, VerticalSeparator, Container } from './stylesheet';
 import { Color } from '../constants';
+import { addDeck, clearDecks } from '../actions';
 
 class NewDeck extends React.Component {
+
+  state = {
+    title: ''
+  }
+
+  handleTitleChange = (title) => {
+    this.setState({
+      ...this.state,
+      title
+    })
+  }
+
+  clearForm = () => {
+    this.setState({
+      title: '',
+    })
+  }
+
+  handleSubmit = () => {
+    this.props.dispatch(addDeck(this.state.title))
+    this.clearForm()
+  }
+
+  handleClear = () => {
+    this.props.dispatch(clearDecks())
+  }
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -15,7 +43,9 @@ class NewDeck extends React.Component {
           <FormInput
             // shake
             placeholder={'Deck Title'}
-            onChangeText={() => { }} />
+            value={this.state.title}
+            onChangeText={this.handleTitleChange}
+          />
           {/* <FormValidationMessage>Error message</FormValidationMessage> */}
         </View>
         <BigVerticalSeparator />
@@ -27,9 +57,7 @@ class NewDeck extends React.Component {
             backgroundColor={Color.Primary}
             backgroundDarker={Color.Border}
             textColor={Color.White}
-            onPress={() => {
-              // navigation.navigate('Card', { ...deck });
-            }}
+            onPress={this.handleSubmit}
           >Submit
         </AwesomeButton>
         </View>

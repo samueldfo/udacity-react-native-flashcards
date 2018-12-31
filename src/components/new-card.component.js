@@ -5,8 +5,40 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 import AwesomeButton from 'react-native-really-awesome-button';
 import { BigVerticalSeparator, Container } from './stylesheet';
 import { Color } from '../constants';
+import { addCard } from '../actions';
 
 class NewCard extends React.Component {
+
+  state = {
+    question: '',
+    answer: '',
+  }
+
+  handleQuestionChange = (question) => {
+    this.setState({
+      ...this.state,
+      question
+    })
+  }
+
+  handleAnswerChange = (answer) => {
+    this.setState({
+      ...this.state,
+      answer
+    })
+  }
+
+  clearForm = () => {
+    this.setState({
+      question: '',
+      answer: '',
+    })
+  }
+
+  handleSubmit = () => {
+    this.props.dispatch(addCard(this.props.deck.id, this.state.question, this.state.answer))
+    this.clearForm()
+  }
 
   static navigationOptions = ({ navigation }) => ({
     headerTintColor: 'white',
@@ -23,9 +55,10 @@ class NewCard extends React.Component {
           <FormInput
             // shake
             inputStyle={{ width: '100%' }}
+            value={this.state.question}
+            onChangeText={this.handleQuestionChange}
             multiline
-            placeholder={'Question'}
-            onChangeText={() => { }} />
+            placeholder={'Question'} />
           {/* <FormValidationMessage>Error message</FormValidationMessage> */}
         </View>
         <View>
@@ -33,9 +66,10 @@ class NewCard extends React.Component {
           <FormInput
             // shake
             inputStyle={{ width: '100%' }}
+            value={this.state.answer}
+            onChangeText={this.handleAnswerChange}
             multiline
-            placeholder={'Answer'}
-            onChangeText={() => { }} />
+            placeholder={'Answer'} />
           {/* <FormValidationMessage>Error message</FormValidationMessage> */}
         </View>
         <BigVerticalSeparator />
@@ -47,9 +81,7 @@ class NewCard extends React.Component {
             backgroundColor={Color.Primary}
             backgroundDarker={Color.Border}
             textColor={Color.White}
-            onPress={() => {
-              // navigation.navigate('Card', { ...deck });
-            }}
+            onPress={this.handleSubmit}
           >Submit
         </AwesomeButton>
         </View>
@@ -58,7 +90,15 @@ class NewCard extends React.Component {
   }
 }
 
+function mapStateToProps({ decks }, { navigation }) {
+  const id = navigation.getParam('id', '')
+  const deck = decks.items.find(deck => deck.id === id)
+  return {
+    deck
+  }
+}
+
 export default connect(
-  // mapStateToProps,
+  mapStateToProps,
   // mapDispatchToProps,
 )(NewCard)
