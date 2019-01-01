@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import { ADDED_CARD, ADDED_DECK, ADD_CARD, ADD_DECK, RECEIVE_DECKS, REQUEST_DECKS } from './actions';
 
 const initialState = {
   isFetching: false,
@@ -6,15 +7,6 @@ const initialState = {
   addedDeck: null,
 }
 
-import {
-  RECEIVE_DECKS,
-  REQUEST_DECKS,
-  ADD_DECK,
-  ADDED_DECK,
-  ADD_CARD,
-  ADDED_CARD,
-  // OPENED_ADDED_CARD,
-} from './actions'
 
 export function decks(state = initialState, action) {
   const { decks, deck, deckId, card } = action
@@ -48,11 +40,6 @@ export function decks(state = initialState, action) {
           cards: deck.cards.concat(card),
         } : deck),
       }
-    // case OPENED_ADDED_CARD:
-    //   return {
-    //     ...state,
-    //     addedDeck: null,
-    //   }
     default:
       return state
   }

@@ -1,6 +1,6 @@
-import React from 'react'
-import { View, StatusBar } from 'react-native';
 import { Constants } from 'expo';
+import React from 'react';
+import { StatusBar, View } from 'react-native';
 
 export default function StyledStatusBar({ backgroundColor, ...props }) {
   return (

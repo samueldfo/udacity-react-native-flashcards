@@ -2,12 +2,11 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from 'react-native-vector-icons';
 import { createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
-import Decks from './components/deck-list.component';
-import NewDeck from './components/new-deck.component';
-import DeckMenu from './components/deck-menu.component';
 import Card from './components/card.component';
+import Decks from './components/deck-list.component';
+import DeckMenu from './components/deck-menu.component';
 import NewCard from './components/new-card.component';
-import { Color } from './constants'
+import NewDeck from './components/new-deck.component';
 
 const RouteConfigs = {
   Decks: {
@@ -61,11 +60,6 @@ const MainNavigator = createStackNavigator({
   NewCard: {
     screen: NewCard,
   }
-},
-  {
-    // headerMode: 'none',
-  }
-
-);
+});
 
 export default AppNavigator = createAppContainer(MainNavigator)

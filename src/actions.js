@@ -1,4 +1,4 @@
-import * as API from './api'
+import * as API from './api';
 
 export const REQUEST_DECKS = 'REQUEST_DECKS';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
@@ -7,7 +7,6 @@ export const ADDED_DECK = 'ADDED_DECK';
 export const ADD_CARD = 'ADD_CARD';
 export const ADDED_CARD = 'ADDED_CARD';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
-// export const OPENED_ADDED_CARD = 'OPENED_ADDED_CARD';
 
 export function getDecks() {
   return async dispatch => {
@@ -50,7 +49,3 @@ export function clearDecks() {
     dispatch({ type: CLEARED_DECKS });
   }
 }
-
-// export function fetchOpenedAddedDeck() {
-//   return dispatch => dispatch({ type: OPENED_ADDED_CARD })
-// }

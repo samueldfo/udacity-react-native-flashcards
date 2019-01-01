@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { connect } from 'react-redux';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { View } from 'react-native';
+import { FormInput, FormLabel } from 'react-native-elements';
 import AwesomeButton from 'react-native-really-awesome-button';
-import { BigVerticalSeparator, Container } from './stylesheet';
-import { Color } from '../constants';
+import { connect } from 'react-redux';
 import { addCard } from '../actions';
+import { Color } from '../constants';
+import { BigVerticalSeparator } from './stylesheet';
 
 class NewCard extends React.Component {
 

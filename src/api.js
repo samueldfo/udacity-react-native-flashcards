@@ -12,33 +12,6 @@ export async function getDecks() {
   return decks;
 }
 
-// export async function getDeck(id) {
-
-//   let deck = [{
-//     id: 'react',
-//     title: 'React',
-//     cards: [
-//       {
-//         question: 'What is React?',
-//         answer: 'A library for managing user interfaces'
-//       },
-//       {
-//         question: 'Where do you make Ajax requests in React?',
-//         answer: 'The componentDidMount lifecycle event'
-//       }
-//     ]
-//   }
-//   ];
-//   return deck;
-
-// let result = await AsyncStorage.getItem(DATABASE_KEY);
-// let data = JSON.parse(result) || [];
-// let decks = Object.keys(data).map(key => {
-//   return { ...data[key] }
-// })
-// return decks[id];
-// }
-
 export async function addDeck(title) {
   const id = v4()
   const newDeck = {

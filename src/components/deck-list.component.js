@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, FlatList, SafeAreaView } from 'react-native';
+import { FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, DeckText } from './stylesheet';
-import { Deck } from './deck.component';
 import { getDecks } from '../actions';
+import { Deck } from './deck.component';
+import { Container } from './stylesheet';
 
 class Decks extends React.Component {
 
@@ -30,7 +30,6 @@ function mapStateToProps({ decks }, { navigation }) {
   return {
     // openDeck: decks.addedDeck ? () => navigation.navigate('DeckDetail', { ...decks.addedDeck }) : null,
     decks: decks.items.map(item => {
-      console.log(item)
       return {
         ...item,
         handleClick: () => navigation.navigate('DeckMenu', { ...item }),

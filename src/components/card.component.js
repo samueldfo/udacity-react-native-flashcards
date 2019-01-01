@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, View, FlatList, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { connect } from 'react-redux';
-import { DeckContainer, Title, CardContent, DeckContent, CardContainer, Container, BigVerticalSeparator, VerticalSeparator } from './stylesheet';
+import { Alert, Text } from 'react-native';
 import CardFlip from 'react-native-card-flip';
-import { Color } from '../constants';
 import AwesomeButton from 'react-native-really-awesome-button';
+import { connect } from 'react-redux';
+import { Color } from '../constants';
+import { BigVerticalSeparator, CardContainer, CardContent, Container, VerticalSeparator } from './stylesheet';
 
-// const viewPortWidth = Dimensions.get('window').width;
 class Card extends React.Component {
   state = {
     cardIndex: 0,

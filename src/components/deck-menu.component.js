@@ -1,12 +1,10 @@
 import React from 'react';
-import { Text, View, FlatList, TouchableOpacity, StyleSheet, Button, SafeAreaView } from 'react-native';
-import { connect } from 'react-redux';
-import { Container, Title, DeckContent, VerticalSeparator } from './stylesheet';
 import AwesomeButton from 'react-native-really-awesome-button';
-import CardFlip from 'react-native-card-flip';
+import { connect } from 'react-redux';
 import { Color } from '../constants';
+import { Deck } from './deck.component';
+import { BigVerticalSeparator, Container, VerticalSeparator } from './stylesheet';
 
-// const viewPortWidth = Dimensions.get('window').width;
 class DeckMenu extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
@@ -14,15 +12,15 @@ class DeckMenu extends React.Component {
     headerStyle: {
       backgroundColor: Color.Primary,
     },
-    headerTitle: navigation.getParam('title', ''),
+    // headerTitle: navigation.getParam('title', ''),
   })
 
   render() {
     let { deck, navigation } = this.props
     return (
       <Container>
-        <Text>{deck.title}</Text>
-        <Text>{deck.cards.length}</Text>
+        <Deck item={deck}></Deck>
+        <BigVerticalSeparator />
         <AwesomeButton
           backgroundColor={Color.Secondary}
           backgroundDarker={Color.Border}
