@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, View, SafeAreaView } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
@@ -95,27 +95,22 @@ class Card extends React.Component {
             </CardContent>
           </CardFlip>
         </CardContainer>
+        <AwesomeButton
+          backgroundColor={this.state.disabled ? '#dddddd' : '#4CD964'}
+          backgroundDarker={this.state.disabled ? '#dddddd' : 'green'}
+          textColor={this.state.disabled ? 'gray' : Color.White}
+          disabled={this.state.disabled}
+          onPress={this.handleSubmitCorrect}>Correct
+          </AwesomeButton>
+        <VerticalSeparator />
+        <AwesomeButton
+          backgroundColor={this.state.disabled ? '#dddddd' : '#FF3B30'}
+          backgroundDarker={this.state.disabled ? '#dddddd' : '#970800'}
+          textColor={this.state.disabled ? 'gray' : Color.White}
+          disabled={this.state.disabled}
+          onPress={this.handleSubmitIncorrect}>Incorrect
+        </AwesomeButton>
         <MidVerticalSeparator />
-        {/* {!this.state.disabled ? */}
-          {/* <View> */}
-            <AwesomeButton
-              backgroundColor={this.state.disabled ? '#dddddd' : '#4CD964'}
-              backgroundDarker={this.state.disabled ? '#dddddd' : 'green'}
-              textColor={this.state.disabled ? 'gray' : Color.White}
-              disabled={this.state.disabled}
-              onPress={this.handleSubmitCorrect}
-            >Correct
-        </AwesomeButton>
-            <VerticalSeparator />
-            <AwesomeButton
-              backgroundColor={this.state.disabled ? '#dddddd' : '#FF3B30'}
-              backgroundDarker={this.state.disabled ? '#dddddd' : '#970800'}
-              textColor={this.state.disabled ? 'gray' : Color.White}
-              disabled={this.state.disabled}
-              onPress={this.handleSubmitIncorrect}
-            >Incorrect
-        </AwesomeButton>
-          {/* </View> : null} */}
       </Container>
     );
   }

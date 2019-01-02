@@ -4,8 +4,8 @@ import { Color } from '../constants';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
   background-color: ${Color.Background};
 `;
 
@@ -27,8 +27,8 @@ export const DeckContent = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   width: 320px;
-  margin-top:40px;
-  min-height: 250px;
+  margin-top: 20px;
+  min-height: 200px;
   background-color: ${Color.Primary};
   border-radius: 5;
   shadow-color: rgba(0, 0, 0, 0.5);
@@ -41,8 +41,8 @@ export const CardContent = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   width: 320px;
-  margin-top:40px;
-  min-height: 400px;
+  margin-top: 20px;
+  min-height: 300px;
   background-color: ${Color.Secondary};
   border-radius: 5;
   shadow-color: rgba(0, 0, 0, 0.5);
@@ -51,8 +51,8 @@ export const CardContent = styled.TouchableOpacity.attrs({
 `;
 
 export const CardContainer = styled.View`
+  flex: 1;
   width: 320px;
-  height: 470px;
 `;
 
 export const VerticalSeparator = styled.View`

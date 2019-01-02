@@ -1,6 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import { FormInput, FormLabel } from 'react-native-elements';
+import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { FormInput, FormLabel, } from 'react-native-elements';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { addDeck, clearDecks } from '../actions';
@@ -37,31 +37,33 @@ class NewDeck extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <View>
-          <FormLabel>What is the title of your new deck?</FormLabel>
-          <FormInput
-            // shake
-            placeholder={'Deck Title'}
-            value={this.state.title}
-            onChangeText={this.handleTitleChange}
-          />
-          {/* <FormValidationMessage>Error message</FormValidationMessage> */}
-        </View>
-        <BigVerticalSeparator />
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'center'
-        }}>
-          <AwesomeButton
-            backgroundColor={Color.Primary}
-            backgroundDarker={Color.Border}
-            textColor={Color.White}
-            onPress={this.handleSubmit}
-          >Submit
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <View>
+            <FormLabel>What is the title of your new deck?</FormLabel>
+            <FormInput
+              // shake
+              placeholder={'Deck Title'}
+              value={this.state.title}
+              onChangeText={this.handleTitleChange}
+            />
+            {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+          </View>
+          <BigVerticalSeparator />
+          <View style={{
+            flexDirection: 'row',
+            justifyContent: 'center'
+          }}>
+            <AwesomeButton
+              backgroundColor={Color.Primary}
+              backgroundDarker={Color.Border}
+              textColor={Color.White}
+              onPress={this.handleSubmit}
+            >Submit
         </AwesomeButton>
-        </View>
-      </View >
+          </View>
+        </View >
+      </TouchableWithoutFeedback>
     );
   }
 }
