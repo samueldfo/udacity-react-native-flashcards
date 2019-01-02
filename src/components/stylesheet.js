@@ -43,7 +43,7 @@ export const CardContent = styled.TouchableOpacity.attrs({
   width: 320px;
   margin-top:40px;
   min-height: 400px;
-  background-color: ${Color.Primary};
+  background-color: ${Color.Secondary};
   border-radius: 5;
   shadow-color: rgba(0, 0, 0, 0.5);
   shadow-offset: 0px 1px;
@@ -57,6 +57,10 @@ export const CardContainer = styled.View`
 
 export const VerticalSeparator = styled.View`
   height: 16px;
+`;
+
+export const MidVerticalSeparator = styled.View`
+  height: 32px;
 `;
 
 export const BigVerticalSeparator = styled.View`

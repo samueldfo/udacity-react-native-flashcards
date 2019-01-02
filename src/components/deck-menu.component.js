@@ -12,7 +12,6 @@ class DeckMenu extends React.Component {
     headerStyle: {
       backgroundColor: Color.Primary,
     },
-    // headerTitle: navigation.getParam('title', ''),
   })
 
   render() {
@@ -53,13 +52,7 @@ function mapStateToProps({ decks }, { navigation }) {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     getDeck: () => dispatch(getDeck()),
-//   }
-// }
-
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  null,
 )(DeckMenu)

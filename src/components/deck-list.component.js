@@ -28,7 +28,6 @@ class Decks extends React.Component {
 
 function mapStateToProps({ decks }, { navigation }) {
   return {
-    // openDeck: decks.addedDeck ? () => navigation.navigate('DeckDetail', { ...decks.addedDeck }) : null,
     decks: decks.items.map(item => {
       return {
         ...item,

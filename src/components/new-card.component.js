@@ -100,5 +100,5 @@ function mapStateToProps({ decks }, { navigation }) {
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  null,
 )(NewCard)
