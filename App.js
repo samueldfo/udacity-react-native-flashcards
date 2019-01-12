@@ -5,12 +5,17 @@ import thunk from 'redux-thunk';
 import StyledStatusBar from './src/components/status-bar.component';
 import AppNavigator from './src/navigator';
 import reducer from './src/reducers';
+import { setLocalNotification } from './src/notifications';
 
 const store = createStore(
   reducer,
   applyMiddleware(thunk)
 )
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
 
   render() {
     return (
