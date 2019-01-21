@@ -21,7 +21,7 @@ export function getDecks() {
 
 export function addDeck(title) {
   return async dispatch => {
-    dispatch({ type: ADD_DECK })
+    // dispatch({ type: ADD_DECK })
     let deck = await API.addDeck(title);
     dispatch({
       type: ADDED_DECK,

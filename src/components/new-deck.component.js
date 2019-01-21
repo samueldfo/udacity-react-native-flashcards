@@ -28,7 +28,8 @@ class NewDeck extends React.Component {
 
   handleSubmit = () => {
     this.props.addDeck(this.state.title)
-      .then(this.props.navigation.goBack())
+      .then(this.clearForm())
+      .then(this.props.popNavigate)
   }
 
   handleClear = () => {
@@ -68,6 +69,12 @@ class NewDeck extends React.Component {
   }
 }
 
+function mapStateToProps({ decks }, { navigation }) {
+  return {
+    popNavigate: () => navigation.navigate('DeckMenu', { ...decks.addedDeck }),
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     addDeck: (title) => dispatch(addDeck(title)),
@@ -75,6 +82,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(NewDeck)

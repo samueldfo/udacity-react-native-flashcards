@@ -5,6 +5,7 @@ import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { Color } from '../constants';
 import { BigVerticalSeparator, CardContainer, CardContent, Container, VerticalSeparator, MidVerticalSeparator, H1, Body } from './stylesheet';
+import { shuffle } from 'lodash'
 
 class Card extends React.Component {
   state = {
@@ -27,10 +28,21 @@ class Card extends React.Component {
       'Congratulations',
       `Your score was ${scorePercentage}%`,
       [
-        { text: 'OK', onPress: () => this.props.navigation.pop() },
+        { text: 'Back to Quiz', onPress: () => this.props.navigation.pop() },
+        { text: 'Restart', onPress: () => this.handleRestart() },
       ]
     )
   }
+
+  handleRestart = () => {
+    shuffle(this.props.deck.cards);
+    this.setState({
+      ...this.state,
+      cardIndex: 0,
+      score: 0,
+    })
+  }
+
 
   handleSubmitCorrect = () => {
     this.card.flip()

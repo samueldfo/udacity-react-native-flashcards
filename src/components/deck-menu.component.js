@@ -45,7 +45,7 @@ class DeckMenu extends React.Component {
 }
 
 function mapStateToProps({ decks }, { navigation }) {
-  const id = navigation.getParam('id', '')
+  const id = navigation.getParam('id', '') || decks.addedDeck.id
   const deck = decks.items.find(deck => deck.id === id)
   return {
     deck
