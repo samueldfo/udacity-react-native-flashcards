@@ -27,8 +27,8 @@ class NewDeck extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.dispatch(addDeck(this.state.title))
-    this.clearForm()
+    this.props.addDeck(this.state.title)
+      .then(this.props.navigation.goBack())
   }
 
   handleClear = () => {
@@ -68,7 +68,13 @@ class NewDeck extends React.Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addDeck: (title) => dispatch(addDeck(title)),
+  }
+}
+
 export default connect(
   null,
-  null,
+  mapDispatchToProps,
 )(NewDeck)

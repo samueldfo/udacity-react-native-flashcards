@@ -4,7 +4,7 @@ export const REQUEST_DECKS = 'REQUEST_DECKS';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
 export const ADDED_DECK = 'ADDED_DECK';
-export const ADD_CARD = 'ADD_CARD';
+// export const ADD_CARD = 'ADD_CARD';
 export const ADDED_CARD = 'ADDED_CARD';
 export const CLEAR_DECKS = 'CLEAR_DECKS';
 
@@ -32,7 +32,7 @@ export function addDeck(title) {
 
 export function addCard(deckId, question, answer) {
   return async dispatch => {
-    dispatch({ type: ADD_CARD })
+    // dispatch({ type: ADD_CARD })
     await API.addCard(deckId, question, answer);
     dispatch({
       type: ADDED_CARD,
