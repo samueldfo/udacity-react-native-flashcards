@@ -28,8 +28,8 @@ class Card extends React.Component {
       'Congratulations',
       `Your score was ${scorePercentage}%`,
       [
-        { text: 'Back to Quiz', onPress: () => this.props.navigation.pop() },
-        { text: 'Restart', onPress: () => this.handleRestart() },
+        { text: 'Back to deck', onPress: () => this.props.navigation.pop() },
+        { text: 'Restart', onPress: this.handleRestart },
       ]
     )
   }

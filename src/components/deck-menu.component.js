@@ -1,11 +1,10 @@
+import { get, isEmpty } from 'lodash';
 import React from 'react';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { Color } from '../constants';
 import { Deck } from './deck.component';
 import { BigVerticalSeparator, Container, VerticalSeparator } from './stylesheet';
-import { isEmpty, get } from 'lodash';
-import { Alert } from 'react-native';
 
 class DeckMenu extends React.Component {
 
