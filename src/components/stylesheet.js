@@ -56,6 +56,12 @@ export const CardContainer = styled.View`
   width: 320px;
 `;
 
+export const ButtonsContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  width: 320px;
+`;
+
 export const VerticalSeparator = styled.View`
   height: 16px;
 `;

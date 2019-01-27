@@ -5,7 +5,7 @@ import CardFlip from 'react-native-card-flip';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { Color } from '../constants';
-import { BigVerticalSeparator, Body, CardContainer, CardContent, Container, H1, MidVerticalSeparator, VerticalSeparator } from './stylesheet';
+import { BigVerticalSeparator, Body, ButtonsContainer, CardContainer, CardContent, Container, H1, MidVerticalSeparator, VerticalSeparator } from './stylesheet';
 
 class Card extends React.Component {
   state = {
@@ -90,7 +90,7 @@ class Card extends React.Component {
     return (
       <Container>
         <VerticalSeparator />
-        <H1 style={{ color: 'gray' }}>{this.state.cardIndex + 1}/{this.state.cardsTotal}</H1>
+        <H1 style={{ color: Color.Border }}>{this.state.cardIndex + 1}/{this.state.cardsTotal}</H1>
         <CardContainer>
           <CardFlip perspective={40000} ref={(card) => this.card = card} onFlip={this.handleFlip} >
             <CardContent onPress={() => this.card.flip()}>
@@ -107,22 +107,24 @@ class Card extends React.Component {
             </CardContent>
           </CardFlip>
         </CardContainer>
-        <AwesomeButton
-          backgroundColor={this.state.disabled ? '#dddddd' : '#4CD964'}
-          backgroundDarker={this.state.disabled ? '#dddddd' : 'green'}
-          textColor={this.state.disabled ? 'gray' : Color.White}
-          disabled={this.state.disabled}
-          onPress={this.handleSubmitCorrect}>Correct
+        <ButtonsContainer>
+          <AwesomeButton
+            backgroundColor={this.state.disabled ? '#dddddd' : '#4CD964'}
+            backgroundDarker={this.state.disabled ? '#dddddd' : 'green'}
+            textColor={this.state.disabled ? 'gray' : Color.White}
+            disabled={this.state.disabled}
+            onPress={this.handleSubmitCorrect}>Correct
           </AwesomeButton>
-        <VerticalSeparator />
-        <AwesomeButton
-          backgroundColor={this.state.disabled ? '#dddddd' : '#FF3B30'}
-          backgroundDarker={this.state.disabled ? '#dddddd' : '#970800'}
-          textColor={this.state.disabled ? 'gray' : Color.White}
-          disabled={this.state.disabled}
-          onPress={this.handleSubmitIncorrect}>Incorrect
+          <VerticalSeparator />
+          <AwesomeButton
+            backgroundColor={this.state.disabled ? '#dddddd' : '#FF3B30'}
+            backgroundDarker={this.state.disabled ? '#dddddd' : '#970800'}
+            textColor={this.state.disabled ? 'gray' : Color.White}
+            disabled={this.state.disabled}
+            onPress={this.handleSubmitIncorrect}>Incorrect
         </AwesomeButton>
-        <MidVerticalSeparator />
+          <MidVerticalSeparator />
+        </ButtonsContainer>
       </Container>
     );
   }
