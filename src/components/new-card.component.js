@@ -20,14 +20,16 @@ class NewCard extends React.Component {
   handleQuestionChange = (question) => {
     this.setState({
       ...this.state,
-      question
+      question,
+      qError: false,
     })
   }
 
   handleAnswerChange = (answer) => {
     this.setState({
       ...this.state,
-      answer
+      answer,
+      aError: false,
     })
   }
 
@@ -39,21 +41,11 @@ class NewCard extends React.Component {
   }
 
   handleSubmit = () => {
-    if (isEmpty(this.state.question) && isEmpty(this.state.answer)) {
+    if (isEmpty(this.state.question) || isEmpty(this.state.answer)) {
       this.setState({
         ...this.state,
-        qError: true,
-        aError: true,
-      })
-    } else if (isEmpty(this.state.question)) {
-      this.setState({
-        ...this.state,
-        qError: true,
-      })
-    } else if (isEmpty(this.state.answer)) {
-      this.setState({
-        ...this.state,
-        aError: true,
+        qError: isEmpty(this.state.question),
+        aError: isEmpty(this.state.answer),
       })
     } else {
       this.props.dispatch(addCard(this.props.deck.id, this.state.question, this.state.answer))

@@ -12,13 +12,14 @@ class NewDeck extends React.Component {
 
   state = {
     title: '',
-    error: null
+    error: false
   }
 
   handleTitleChange = (title) => {
     this.setState({
       ...this.state,
-      title
+      title,
+      error: false
     })
   }
 
@@ -29,7 +30,7 @@ class NewDeck extends React.Component {
   }
 
   handleSubmit = () => {
-    if (isEmpty(this.state.question) && isEmpty(this.state.answer)) {
+    if (isEmpty(this.state.title)) {
       this.setState({
         ...this.state,
         error: true,
