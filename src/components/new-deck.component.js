@@ -48,7 +48,7 @@ class NewDeck extends React.Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center', backgroundColor: Color.Background }}>
           <View>
             <FormLabel>What is the title of your new deck?</FormLabel>
             <FormInput

@@ -71,7 +71,7 @@ class NewCard extends React.Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center', backgroundColor: Color.Background }}>
           <View>
             <FormLabel>What is your question?</FormLabel>
             <FormInput

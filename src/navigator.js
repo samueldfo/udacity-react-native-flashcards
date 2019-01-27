@@ -7,6 +7,7 @@ import Decks from './components/deck-list.component';
 import DeckMenu from './components/deck-menu.component';
 import NewCard from './components/new-card.component';
 import NewDeck from './components/new-deck.component';
+import { Color } from './constants';
 
 const RouteConfigs = {
   Decks: {
@@ -21,19 +22,16 @@ const RouteConfigs = {
     navigationOptions: {
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-create' size={30} color={tintColor} />
-    }
+    },
   },
 };
 
 const TabNavigatorConfig = {
-  navigationOptions: {
-    header: null
-  },
   tabBarOptions: {
-    activeTintColor: '#FFCC00',
+    activeTintColor: Color.Border,
     style: {
       height: 56,
-      backgroundColor: '#ffffff',
+      backgroundColor: Color.White,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -45,11 +43,16 @@ const TabNavigatorConfig = {
   }
 };
 
-const Tabs = Platform.OS === 'ios' ? createBottomTabNavigator(RouteConfigs, TabNavigatorConfig) : createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
+const Tabs = Platform.OS === 'ios' ?
+  createBottomTabNavigator(RouteConfigs, TabNavigatorConfig) :
+  createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
 
 const MainNavigator = createStackNavigator({
   Main: {
     screen: Tabs,
+    navigationOptions: {
+      header: null
+    },
   },
   DeckMenu: {
     screen: DeckMenu,
@@ -59,7 +62,7 @@ const MainNavigator = createStackNavigator({
   },
   NewCard: {
     screen: NewCard,
-  }
-});
+  },
+})
 
 export default AppNavigator = createAppContainer(MainNavigator)
