@@ -1,6 +1,7 @@
+import { isEmpty } from 'lodash';
 import React from 'react';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { FormInput, FormLabel, } from 'react-native-elements';
+import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import { FormInput, FormLabel, FormValidationMessage } from 'react-native-elements';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { addDeck, clearDecks } from '../actions';
@@ -10,7 +11,8 @@ import { BigVerticalSeparator } from './stylesheet';
 class NewDeck extends React.Component {
 
   state = {
-    title: ''
+    title: '',
+    error: null
   }
 
   handleTitleChange = (title) => {
@@ -27,9 +29,16 @@ class NewDeck extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.addDeck(this.state.title)
-      .then(this.clearForm())
-      .then(this.props.popNavigate)
+    if (isEmpty(this.state.question) && isEmpty(this.state.answer)) {
+      this.setState({
+        ...this.state,
+        error: true,
+      })
+    } else {
+      this.props.addDeck(this.state.title)
+        .then(this.clearForm())
+        .then(this.props.popNavigate)
+    }
   }
 
   handleClear = () => {
@@ -43,12 +52,12 @@ class NewDeck extends React.Component {
           <View>
             <FormLabel>What is the title of your new deck?</FormLabel>
             <FormInput
-              // shake
+              shake={this.state.error}
               placeholder={'Deck Title'}
               value={this.state.title}
               onChangeText={this.handleTitleChange}
             />
-            {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+            <FormValidationMessage>{this.state.error ? 'This field is required' : null}</FormValidationMessage>
           </View>
           <BigVerticalSeparator />
           <View style={{

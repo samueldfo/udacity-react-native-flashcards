@@ -15,4 +15,4 @@ Then follow instructions to run in iOS simulator, Android simulator or a device.
 
 This app was tested in
 
-iOS Simulator: iOS 12 - iPhone XR 12.1
+- iOS Simulator: iOS 12 - iPhone XR 12.1

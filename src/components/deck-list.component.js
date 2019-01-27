@@ -14,9 +14,10 @@ class Decks extends React.Component {
   render() {
     const { decks } = this.props
     return (
-      <Container>
+      <Container >
         <FlatList
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingVertical: 10 }}
           data={decks}
           keyExtractor={(item) => item.id}
           renderItem={Deck}

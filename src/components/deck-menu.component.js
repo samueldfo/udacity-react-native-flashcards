@@ -22,6 +22,7 @@ class DeckMenu extends React.Component {
 
     return (
       <Container>
+        <BigVerticalSeparator />
         <Deck item={deck}></Deck>
         <BigVerticalSeparator />
         <AwesomeButton

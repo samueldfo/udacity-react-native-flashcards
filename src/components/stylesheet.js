@@ -27,7 +27,8 @@ export const DeckContent = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   width: 320px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   min-height: 200px;
   background-color: ${Color.Primary};
   border-radius: 5;
