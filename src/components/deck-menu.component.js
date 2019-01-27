@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Color } from '../constants';
 import { Deck } from './deck.component';
 import { BigVerticalSeparator, Container, VerticalSeparator } from './stylesheet';
+import { isEmpty, get } from 'lodash';
+import { Alert } from 'react-native';
 
 class DeckMenu extends React.Component {
 
@@ -16,6 +18,9 @@ class DeckMenu extends React.Component {
 
   render() {
     let { deck, navigation } = this.props
+
+    card = isEmpty(get(this.props.deck, 'cards'))
+
     return (
       <Container>
         <Deck item={deck}></Deck>
@@ -25,21 +30,20 @@ class DeckMenu extends React.Component {
           backgroundDarker={Color.Border}
           textColor={Color.Primary}
           onPress={() => {
-            navigation.navigate('NewCard', { ...deck });
-          }}
-        >Add Card
+            navigation.navigate('NewCard', { ...deck })
+          }}>Add Card
         </AwesomeButton>
         <VerticalSeparator />
         <AwesomeButton
-          backgroundColor={Color.Primary}
-          backgroundDarker={Color.Border}
-          textColor={Color.White}
-          onPress={() => {
-            navigation.navigate('Card', { ...deck });
-          }}
-        >Start Quiz
+          backgroundColor={card ? '#dddddd' : Color.Primary}
+          backgroundDarker={card ? '#dddddd' : Color.Border}
+          textColor={card ? 'gray' : Color.White}
+          disabled={card}
+          onPress={() =>
+            navigation.navigate('Card', { ...deck })
+          }>Start Quiz
         </AwesomeButton>
-      </Container>
+      </Container >
     )
   }
 }

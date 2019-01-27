@@ -1,11 +1,11 @@
+import { shuffle } from 'lodash';
 import React from 'react';
-import { Alert, View, SafeAreaView } from 'react-native';
+import { Alert } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import AwesomeButton from 'react-native-really-awesome-button';
 import { connect } from 'react-redux';
 import { Color } from '../constants';
-import { BigVerticalSeparator, CardContainer, CardContent, Container, VerticalSeparator, MidVerticalSeparator, H1, Body } from './stylesheet';
-import { shuffle } from 'lodash'
+import { BigVerticalSeparator, Body, CardContainer, CardContent, Container, H1, MidVerticalSeparator, VerticalSeparator } from './stylesheet';
 
 class Card extends React.Component {
   state = {
